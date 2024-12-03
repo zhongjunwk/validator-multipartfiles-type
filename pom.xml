@@ -8,7 +8,7 @@
     <version>${reverion}</version>
 
     <modules>
-        <module>validator-multipartfiles-type-api</module>
+        <module>multipartfiles-type-validator-component</module>
     </modules>
 
     <properties>
@@ -21,24 +21,19 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>5.8.33</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>6.1.14</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>6.1.14</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>3.3.2</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.validation</groupId>
                 <artifactId>jakarta.validation-api</artifactId>
                 <version>3.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.8.33</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -49,6 +44,18 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.18.34</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>3.3.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.1</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
