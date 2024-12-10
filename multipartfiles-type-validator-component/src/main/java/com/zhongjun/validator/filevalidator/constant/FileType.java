@@ -61,11 +61,6 @@ public enum FileType {
 
     private final String name;
 
-    public String getName() {
-        return name;
-    }
-
-
     public static String match(String name) {
         for (FileType enums : FileType.values()) {
             if (enums.getName() == name) {
@@ -73,5 +68,9 @@ public enum FileType {
             }
         }
         return "";
+    }
+
+    public String getName() {
+        return name;
     }
 }
