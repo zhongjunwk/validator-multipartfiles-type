@@ -6,6 +6,7 @@ import com.zhongjun.validator.filevalidator.validator.MultipartFileValidator;
 import com.zhongjun.validator.filevalidator.validator.MultipartFilesValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
+import org.springframework.stereotype.Component;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -31,6 +32,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({PARAMETER, ANNOTATION_TYPE})
 @Retention(RUNTIME)
 @Documented
+@Component
 @Constraint(validatedBy = {MultipartFilesValidator.class, MultipartFileValidator.class})
 public @interface MultipartFileVerify {
 

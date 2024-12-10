@@ -9,4 +9,5 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @ComponentScan("com.zhongjun.validator.filevalidator")
-public class FileValidatorAutoConfiguration {}
+public class FileValidatorAutoConfiguration {
+}

@@ -1,0 +1,5 @@
+#日志设置
+logging:
+  level:
+    root: debug
+    com.zhongjun.validator.filevalidator.FileValidatorDemoApplication: info
