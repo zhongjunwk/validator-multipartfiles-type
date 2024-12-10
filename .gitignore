@@ -2,3 +2,7 @@
 /multipartfiles-type-validator-component/target/
 /multipartfiles-type-validator-component-demo/target/
 /logs/
+/multipartfiles-type-validator-component/multipartfiles-type-validator-component.iml
+/multipartfiles-type-validator-component-demo/multipartfiles-type-validator-component-demo.iml
+/multipartfiles-type-validator-component/src/main/resources/rebel.xml
+/multipartfiles-type-validator-component-demo/src/main/resources/rebel.xml

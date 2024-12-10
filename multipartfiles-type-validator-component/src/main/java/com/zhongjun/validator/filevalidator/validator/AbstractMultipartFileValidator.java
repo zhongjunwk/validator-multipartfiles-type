@@ -6,7 +6,6 @@ import com.zhongjun.validator.filevalidator.resolver.MultipartFileResolver;
 import jakarta.annotation.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -34,6 +33,9 @@ public class AbstractMultipartFileValidator {
             return true;
         }
         for (MultipartFileResolver multipartFileResolver : multipartFileResolverList) {
+            if (!multipartFileResolver.support(multipartFileValid)) {
+                continue;
+            }
             if (!multipartFileResolver.isFileValid(multipartFileValid, multipartFile)) {
                 return false;
             }

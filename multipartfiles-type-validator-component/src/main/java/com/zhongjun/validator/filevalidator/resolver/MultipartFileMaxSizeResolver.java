@@ -6,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-
 /**
  * 文件类型校验-文件大小限制
  *
@@ -22,15 +20,19 @@ public class MultipartFileMaxSizeResolver implements MultipartFileResolver {
     @Override
     public boolean isFileValid(MultipartFileVerify multipartFileValid, MultipartFile value) {
         if (value.isEmpty()) {
-            log.warn("upload file is empty.");
+            return true;
+        }
+        // 如果没有超过限制，则校验通过；千字节转字节 * 1024
+        if (value.getSize() <= multipartFileValid.maxSize() * 1024L) {
+            log.info("文件大小超过限制：{}.文件信息：{}", multipartFileValid.maxSize(), this.getFileInfo(value));
             return false;
         }
-        // 1. 如果没有配置文件大小限制，则不校验
-        // 2. 如果没有超过限制，则校验通过；千字节转字节 * 1024
-        if (multipartFileValid.maxSize() < 0 || value.getSize() <= multipartFileValid.maxSize() * 1024L) {
-            return this.isFileValid(multipartFileValid, value);
-        }
-        log.info("文件大小超过限制：{}.文件信息：{}", multipartFileValid.maxSize(), this.getFileInfo(value));
-        return false;
+        return true;
+    }
+
+    @Override
+    public boolean support(MultipartFileVerify multipartFileValid) {
+        // 如果没有配置文件大小限制，则不校验
+        return null != multipartFileValid && multipartFileValid.maxSize() > 0;
     }
 }

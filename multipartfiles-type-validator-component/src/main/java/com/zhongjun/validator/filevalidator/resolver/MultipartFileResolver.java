@@ -5,7 +5,6 @@ import com.zhongjun.validator.filevalidator.annotation.MultipartFileVerify;
 import com.zhongjun.validator.filevalidator.constant.FileType;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 /**
@@ -42,5 +41,9 @@ public interface MultipartFileResolver {
         fileInfo.set("originalFilename", value.getOriginalFilename());
         fileInfo.set("size", value.getSize());
         return fileInfo.toString();
+    }
+
+    default boolean support(MultipartFileVerify multipartFileValid) {
+        return true;
     }
 }

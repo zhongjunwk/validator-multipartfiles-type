@@ -2,14 +2,11 @@ package com.zhongjun.validator.filevalidator.resolver;
 
 import cn.hutool.core.io.file.FileNameUtil;
 import com.zhongjun.validator.filevalidator.annotation.MultipartFileVerify;
-import com.zhongjun.validator.filevalidator.constant.FileType;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 /**
  * 文件类型校验-不允许的文件类型
@@ -24,13 +21,16 @@ public class MultipartFileNotAllowResolver implements MultipartFileResolver {
 
     @Override
     public boolean isFileValid(MultipartFileVerify multipartFileValid, MultipartFile value) {
-        FileType[] fileTypes = multipartFileValid.notAllow();
         String sourceFileType = FileNameUtil.extName(value.getOriginalFilename());
-        // 不配置 或 没有不允许上传的文件类型，则委托给下一个校验器
-        if (ObjectUtils.isEmpty(fileTypes) || this.isNotAllow(fileTypes, sourceFileType)) {
-            return this.isFileValid(multipartFileValid, value);
+        if (this.isNotAllow(multipartFileValid.notAllow(), sourceFileType)) {
+            return true;
         }
         log.info("不允许上传的文件类型：{}.文件信息：{}", sourceFileType, this.getFileInfo(value));
         return false;
+    }
+
+    @Override
+    public boolean support(MultipartFileVerify multipartFileValid) {
+        return null != multipartFileValid && !ObjectUtils.isEmpty(multipartFileValid.notAllow());
     }
 }
