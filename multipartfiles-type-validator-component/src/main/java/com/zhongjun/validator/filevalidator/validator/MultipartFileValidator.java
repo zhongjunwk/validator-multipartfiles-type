@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
  * 单个 MultipartFile 校验
  */
 @Component
-public class MultipartFileValidator extends AbstractMultipartFileValidator implements ConstraintValidator<MultipartFileVerify, MultipartFile> {
+public class MultipartFileValidator extends BaseMultipartFileValidator implements ConstraintValidator<MultipartFileVerify, MultipartFile> {
 
     private MultipartFileVerify multipartFileValid;
 

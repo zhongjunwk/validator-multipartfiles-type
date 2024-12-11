@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 兼容多 MultipartFile 校验
  */
-public class AbstractMultipartFileValidator {
+public class BaseMultipartFileValidator {
 
     @Resource
     private List<MultipartFileResolver> multipartFileResolverList;
