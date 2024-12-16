@@ -5,7 +5,6 @@ import com.zhongjun.validator.filevalidator.constant.FileType;
 import com.zhongjun.validator.filevalidator.validator.MultipartFileValidator;
 import com.zhongjun.validator.filevalidator.validator.MultipartFilesValidator;
 import jakarta.validation.Constraint;
-import jakarta.validation.Payload;
 import org.springframework.stereotype.Component;
 
 import java.lang.annotation.Documented;
@@ -37,10 +36,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface MultipartFileVerify {
 
     String message() default "文件校验失败";
-
-    Class<?>[] groups() default {};
-
-    Class<? extends Payload>[] payload() default {};
 
     /**
      * 文件类型限制
